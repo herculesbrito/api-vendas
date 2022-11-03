@@ -13,7 +13,7 @@ interface IRequest {
 //   user: User;
 // }
 
-class CreateSessionsUserService {
+class CreateSessionsService {
   public async execute({ email, password }: IRequest): Promise<User> {
     const usersRepository = getCustomRepository(UsersRepository);
     const user = await usersRepository.findByEmail(email);
@@ -32,4 +32,4 @@ class CreateSessionsUserService {
   }
 }
 
-export default CreateSessionsUserService;
+export default CreateSessionsService;
