@@ -13,7 +13,7 @@ class UserTokensRepository extends Repository<UserToken> {
     return tokenToken;
   }
 
-  public async generate(user_id: string): Promise<UserToken | undefined> {
+  public async generate(user_id: string): Promise<UserToken> {
     const tokenToken = await this.create({
       user_id,
     });
