@@ -29,7 +29,7 @@ class CreateOrderService {
 
     const existsProduct = await productsRepository.findAllByIds(products);
 
-    if (existsProduct.length) {
+    if (!existsProduct.length) {
       throw new AppError('Could not find any products with the given ids.');
     }
 
@@ -74,7 +74,7 @@ class CreateOrderService {
     const updatedProductQuantity = order_products.map(product => ({
       id: product.product_id,
       quantity:
-        existsProduct.filter(p => p.id == product.id)[0].quantity -
+        existsProduct.filter(p => p.id == product.product_id)[0].quantity -
         product.quantity,
     }));
 
